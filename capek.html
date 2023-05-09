@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>kel 10</title>
+	<script src="fontawesome/all.js"></script>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	body{
+		margin: 0;
+		font-family: 'Times New Roman' , Times, serif;
+		font-size: 1rem;
+		background: #f1f1f1;
+		background-color: lightyellow;
+	}
+	.main{
+		display: flex;
+		flex-wrap: nowrap;
+		height: webkit-fill-availeble;
+		max-width: 100vh;
+		overflow-y: auto;
+		overflow-y: hidden;
+		background-color: silver;
+	}
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-decoration: none;
+	}
+	.sidebar{
+		position: fixed;
+		left: 0px;
+		width: 250px;
+		height: 100%;
+		background: #74bdcb;
+		transition: all 0.5s ease;
+	}
+	.sidebar .top{
+		font-size: 22px;
+		color: #fff;
+		text-align: center;
+		line-height: 70px;
+		background-image: linear-gradient(to right, #fec8a7, #b2d2a4);
+	}
+	.sidebar ul a{
+		display: block;
+		height: 100%;
+		width: 100%;
+		line-height: 65px;
+		font-size: 20px;
+		color: #fff;
+		padding-left: 40px;
+		box-sizing: border-box;
+		border-top: 1px solid rgba(6, 255, 251, 0.1);
+		border-bottom: 1px solid rgba(125, 134, 146, 0.302);
+		transition: all 0.5s ease;
+	}
+	ul li:hover a{
+		padding-left: 100px;
+		background: #efe7bc;
+		color: rgb(0, 0, 0);
+	}
+	.sidebar ul a i{
+		margin-right: 16px;
+	}
+	.ammara{
+		padding-left: 50px;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.card{
+		display: flex;
+		flex-wrap: wrap;
+		padding-left: 20px;
+		gap: 25px 40px;
+		justify-content: center;
+		padding: 45px 45px 90px;
+		background-color: lightblue;
+
+	}
+	.adm{
+		background-color: lightpink;
+		border-radius: 10px;
+		padding: 10px 25px 25px;
+		padding-bottom: 20px;
+		flex-grow: 1;
+		flex-basis: 280px;
+		max-width: 360px;
+		position: relative;
+
+	}
+	.adm-text{
+		font-weight: normal;
+		font-size: 0.875rem;
+		line-height: 21px;
+		margin-bottom: 1.5625;
+
+	}
+	
+</style>
+<body>
+	<main>
+		<div class="sidebar">
+			<div class="top">
+				Kelompok 10
+			</div>
+			<ul>
+				<li><a class="#" href="#"><i class="fa-home"></i> Dashboard</a></li>
+				<li><a class="#" href="#"><i class="fa fa-shopping-basket"></i> Data Master</a></li>
+				<li><a class="#" href="#"><i class="fa fa-home"></i> Penjadwalan</a></li>
+				<li><a class="#" href="#"><i class="fa fa-home"></i> Ganti password</a></li>
+			</ul>			
+		</div>
+		<section class="ammara card">
+			<div class="adm">
+			<p class="adm-text">
+				<h1>TITTLE HEADING</h1>
+				<p>Tittle description, 2023</p>
+				
+				</p>
+		</div>
+		</section>
+	
+	</main>
+
+
+</body>
+</html>
