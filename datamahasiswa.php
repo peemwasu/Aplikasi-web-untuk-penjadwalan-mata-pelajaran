@@ -7,7 +7,7 @@ require 'function.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Dashboard</title>
+	<title>Data Mahasiswa</title>
 	<script src="fontawesome/all.js"></script>
     <link href="css/styles4.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -129,47 +129,47 @@ require 'function.php';
 		text
 	}
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #efe7bc;
-  color:black;
-}
+	.dropbtn:hover, .dropbtn:focus {
+  		background-color: #efe7bc;
+  		color:black;
+	}
 
 
-.dropdown-content {
-  display: none;
-  background-color: #0a4f94;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+	.dropdown-content {
+		display: none;
+		background-color: #0a4f94;
+		min-width: 160px;
+		overflow: auto;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
 
-.dropdown-content a {
-  color: #fff;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+	.dropdown-content a {
+		color: #fff;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
 
-.dropdown a:hover {background-color: #74bdcb;}
+	.dropdown a:hover {background-color: #74bdcb;}
 
-.show {display: block;}
+	.show {display: block;}
 
-button{
-	width: 200px;
-}
+	button{
+		width: 200px;
+	}
 
-.kotak{
-  margin-left: 250px;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-}
+	.kotak{
+		margin-left: 250px;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid rgba(0, 0, 0, 0.125);
+		border-radius: 0.25rem;
+	}
 
 </style>
 <body>
@@ -184,13 +184,13 @@ button{
 				<div id="myDropdown" class="dropdown-content">
 					<a href="datadosen.php"><i class="fa fa-fw fa-user"></i>Data Dosen</a>
 					<a href="datamahasiswa.php"><i class="fa fa-fw fa-user"></i>Data Mahasiswa</a>
-					<a href="#"><i class="fa fa-fw fa-user"></i>Data Mata Kuliah</a>
-					<a href="#"><i class="fa fa-fw fa-user"></i>Data Lainnya</a>
+					<a href="datamatkul.php"><i class="fa fa-fw fa-user"></i>Data Mata Kuliah</a>
+					
 				</div>
 
-				<li><a class="#" href="#"><i class="fa fa-fw fa-clipboard"></i> Penjadwalan</a></li>
-				<li><a class="#" href="#"><i class="fa fa-fw fa-lock"></i> Ganti password</a></li>
-				<li><a class="#" href="#"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
+				
+				
+				<li><a class="#" href="logout.php"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
 			</ul>			
 		</div>
         <div class="container">
@@ -206,21 +206,30 @@ button{
                                     <th>No</th>
                                     <th>Nama Mahasiswa</th>
                                     <th>NIM</th>
+									<th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                     <?php 
+										$i = 1;
                                         $ambilsemuadata = mysqli_query($koneksikan,"SELECT * FROM datamahasiswa");
                                         while($data=mysqli_fetch_array($ambilsemuadata)){
-                                        $i = $data['idmahasiswa'];
-                                        $namamahasiswa = $data['namamahasiswa'];
-                                        $nim = $data['nim'];
                                     ?>
                                     <tr>
-                                        <td><?=$i;?></td>
-                                        <td><?=$namamahasiswa;?></td>
-                                        <td><?=$nim;?></td>
-                                    </tr>
+                                        <td><?php echo $i++; ?></td>
+                                        <td><?php echo $data['namamahasiswa']?></td>
+                                        <td><?php echo $data['nim']?></td>
+										<td>
+											<!-- Hubungkan tombol edit ke script php editdatamahasiswa.php dengan mengambil parameter idmahasiswa yang
+												 ada di dalam tabel datamahasiswa -->
+											<a href="editdatamahasiswa.php?idmahasiswa=<?php echo $data['idmahasiswa']; ?>" class="btn btn-sm btn-warning">Edit</a>
+											<!-- Hubungkan tombol edit ke script php hapusdatamahasiswa.php dengan mengambil parameter idmahasiswa yang
+												 ada di dalam tabel datamahasiswa -->
+											<a href="hapusdatamahasiswa.php?idmahasiswa=<?php echo $data['idmahasiswa']; ?>" class="btn btn-sm btn-danger">Hapus</a>
+										</td>
+
+                                    </tr>									
+								</div>
                                     <?php 
                                             };
                                     ?>
@@ -234,14 +243,11 @@ button{
         </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
+        
     </body>
     <!-- The Modal -->
     <div class="modal fade" id="myModal">

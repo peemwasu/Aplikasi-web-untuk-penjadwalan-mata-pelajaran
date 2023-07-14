@@ -7,7 +7,7 @@ require 'function.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Data Dosen</title>
+	<title>Data Matkul</title>
 	<script src="fontawesome/all.js"></script>
     <link href="css/styles4.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -129,47 +129,47 @@ require 'function.php';
 		text
 	}
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #efe7bc;
-  color:black;
-}
+	.dropbtn:hover, .dropbtn:focus {
+  		background-color: #efe7bc;
+  		color:black;
+	}
 
 
-.dropdown-content {
-  display: none;
-  background-color: #0a4f94;
-  min-width: 160px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
+	.dropdown-content {
+		display: none;
+		background-color: #0a4f94;
+		min-width: 160px;
+		overflow: auto;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
 
-.dropdown-content a {
-  color: #fff;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+	.dropdown-content a {
+		color: #fff;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+	}
 
-.dropdown a:hover {background-color: #74bdcb;}
+	.dropdown a:hover {background-color: #74bdcb;}
 
-.show {display: block;}
+	.show {display: block;}
 
-button{
-	width: 200px;
-}
+	button{
+		width: 200px;
+	}
 
-.kotak{
-  margin-left: 250px;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-}
+	.kotak{
+		margin-left: 250px;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid rgba(0, 0, 0, 0.125);
+		border-radius: 0.25rem;
+	}
 
 </style>
 <body>
@@ -184,18 +184,19 @@ button{
 				<div id="myDropdown" class="dropdown-content">
 					<a href="datadosen.php"><i class="fa fa-fw fa-user"></i>Data Dosen</a>
 					<a href="datamahasiswa.php"><i class="fa fa-fw fa-user"></i>Data Mahasiswa</a>
-					<a href="datamatkul.php"><i class="fa fa-fw fa-user"></i>Data Mata Kuliah</a>
+					<a href="datamatkul.php"><i class="sfa fa-fw fa-user"></i>Data Mata Kuliah</a>
+					
 				</div>
 
-
-
+			
+			
 				<li><a class="#" href="logout.php"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
 			</ul>			
 		</div>
         <div class="container">
             <div class="kotak">
                 <div class="card-header">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah Data Dosen</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah Data Matakuliah</button>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -203,34 +204,36 @@ button{
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Dosen</th>
-                                    <th>NIDN</th>
-                                    <th>NIY</th>
-									<th>Aksi</th>
+                                    <th>Kode</th>
+                                    <th>Nama Mata Kuliah</th>
+                                    <th>SKS</th>
+									<th>Semester</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-									<!-- Tampilkan Data Yang Ada di dalam database secara berurutan -->
                                     <?php 
 										$i = 1;
-                                        $ambilsemuadata = mysqli_query($koneksikan,"SELECT * FROM datadosen");
+                                        $ambilsemuadata = mysqli_query($koneksikan,"SELECT * FROM datamatkul");
                                         while($data=mysqli_fetch_array($ambilsemuadata)){
                                     ?>
                                     <tr>
                                         <td><?php echo $i++; ?></td>
-                                        <td><?php echo $data['namadosen']?></td>
-                                        <td><?php echo $data['nidn']?></td>
-                                        <td><?php echo $data['niy']?></td>
+                                        <td><?php echo $data['kode']?></td>
+                                        <td><?php echo $data['nama']?></td>
+                                        <td><?php echo $data['SKS']?></td>
+                                        <td><?php echo $data['semester']?></td>
+                         
 										<td>
-											<!-- Hubungkan tombol edit ke script php editdatadosen.php dengan mengambil parameter iddosen yang
-												 ada di dalam tabel datadosen -->
-											<a href="editdatadosen.php?iddosen=<?php echo $data['iddosen']; ?>" class="btn btn-sm btn-warning">Edit</a>
-											<!-- Hubungkan tombol hapus ke script php hapusdatadosen.php dengan mengambil parameter iddosen yang
-												 ada di dalam tabel datadosen -->
-											<a href="hapusdatadosen.php?iddosen=<?php echo $data['iddosen']; ?>" class="btn btn-sm btn-danger">Hapus</a>
+											<!-- Hubungkan tombol edit ke script php editdatamatkul.php dengan mengambil parameter kode yang
+												 ada di dalam tabel datamahasiswa -->
+											<a href="editdatamatkul.php?kode=<?php echo $data['kode']; ?>" class="btn btn-sm btn-warning">Edit</a>
+											<!-- Hubungkan tombol edit ke script php hapusdatamahasiswa.php dengan mengambil parameter idmahasiswa yang
+												 ada di dalam tabel datamahasiswa -->
+											<a href="hapusdatamatkul.php?kode=<?php echo $data['kode']; ?>" class="btn btn-sm btn-danger">Hapus</a>
 										</td>
-                                    </tr>
+
+                                    </tr>									
+								</div>
                                     <?php 
                                             };
                                     ?>
@@ -244,10 +247,11 @@ button{
         </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        
     </body>
     <!-- The Modal -->
     <div class="modal fade" id="myModal">
@@ -256,16 +260,17 @@ button{
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Tambah Data Dosen</h4>
+          <h4 class="modal-title">Tambah Data Matkul</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div> 
         <!-- Modal body -->
         <form method="post">
         <div class="modal-body">
-          <p><input type="text" name="namadosen" placeholder="Nama Dosen" class="form-control" required></p>
-          <p><input type="text" name="nidn" placeholder="NIDN Dosen" class="form-control" required></p>
-          <p><input type="text" name="niy" placeholder="NIY Dosen" class="form-control" required></p>
-          <button type="submit" class="btn btn-primary" name="tambahdatadosen">Submit</button>
+          <!--<p><input type="text" name="kode" placeholder="kode matkul" class="form-control" required></p> -->
+          <p><input type="text" name="nama" placeholder="nama matkul" class="form-control" required></p>
+          <p><input type="text" name="SKS" placeholder=" jumlah SKS" class="form-control" required></p>
+          <p><input type="text" name="semester" placeholder="semester" class="form-control" required></p>
+          <button type="submit" class="btn btn-primary" name="tambahdatamatkul">Submit</button>
         </div>
         </form>
       </div>

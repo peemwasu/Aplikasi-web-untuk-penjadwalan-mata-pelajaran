@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Dashboard</title>
-	<script src="fontawesome/all.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style type="text/css">
@@ -167,13 +166,13 @@ button{
 				<div id="myDropdown" class="dropdown-content">
 					<a href="datadosen.php"><i class="fa fa-fw fa-user"></i>Data Dosen</a>
 					<a href="datamahasiswa.php"><i class="fa fa-fw fa-user"></i>Data Mahasiswa</a>
-					<a href="#"><i class="fa fa-fw fa-user"></i>Data Mata Kuliah</a>
-					<a href="#"><i class="fa fa-fw fa-user"></i>Data Lainnya</a>
+					<a href="datamatkul.php"><i class="fa fa-fw fa-user"></i>Data Mata Kuliah</a>
+
 				</div>
 
-				<li><a class="#" href="#"><i class="fa fa-fw fa-clipboard"></i> Penjadwalan</a></li>
-				<li><a class="#" href="#"><i class="fa fa-fw fa-lock"></i> Ganti password</a></li>
-				<li><a class="#" href="#"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
+			
+			
+				<li><a href="logout.php"><i class="fa fa-fw fa-sign-out"></i> Log out</a></li>
 			</ul>			
 		</div>
 
